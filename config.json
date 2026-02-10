@@ -1,0 +1,92 @@
+{
+  "site": {
+    "titleTemplate": "{name} | LinkBio",
+    "description": "My links, all in one place.",
+    "ogTitle": "LinkBio",
+    "ogDescription": "All my important links in one place.",
+    "footerHtml": "Powered by <a href=\"#\">LinkBio</a> • Self-Hosted"
+  },
+  "profile": {
+    "name": "Alex Johnson",
+    "handle": "@alexjohnson",
+    "bio": "Digital creator & developer. Building cool things on the internet. ✨",
+    "location": "San Francisco, CA",
+    "avatar": ""
+  },
+  "socials": [
+    {
+      "platform": "twitter",
+      "url": "https://twitter.com"
+    },
+    {
+      "platform": "instagram",
+      "url": "https://instagram.com"
+    },
+    {
+      "platform": "github",
+      "url": "https://github.com"
+    },
+    {
+      "platform": "youtube",
+      "url": "https://youtube.com"
+    },
+    {
+      "platform": "linkedin",
+      "url": "https://linkedin.com"
+    },
+    {
+      "platform": "email",
+      "url": "mailto:hello@example.com"
+    }
+  ],
+  "links": [
+    {
+      "title": "🚀 My Latest Project",
+      "description": "Check out what I've been building",
+      "url": "https://example.com/project",
+      "icon": "🚀",
+      "category": "Projects",
+      "active": true
+    },
+    {
+      "title": "📝 Read My Blog",
+      "description": "Thoughts on tech, design & life",
+      "url": "https://example.com/blog",
+      "icon": "📝",
+      "category": "Content",
+      "active": true
+    },
+    {
+      "title": "🎥 YouTube Channel",
+      "description": "Tutorials and vlogs every week",
+      "url": "https://youtube.com",
+      "icon": "🎥",
+      "category": "Content",
+      "active": true
+    },
+    {
+      "title": "🛒 My Store",
+      "description": "Merch, courses & digital products",
+      "url": "https://example.com/store",
+      "icon": "🛒",
+      "category": "Shop",
+      "active": true
+    },
+    {
+      "title": "📧 Newsletter",
+      "description": "Join 10k+ subscribers",
+      "url": "https://example.com/newsletter",
+      "icon": "📧",
+      "category": "Connect",
+      "active": true
+    },
+    {
+      "title": "💬 Book a Call",
+      "description": "Let's chat about your project",
+      "url": "https://calendly.com",
+      "icon": "💬",
+      "category": "Connect",
+      "active": true
+    }
+  ]
+}

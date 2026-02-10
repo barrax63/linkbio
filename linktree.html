@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LinkBio - Self-Hosted Link in Bio Tool</title>
-    <meta name="description" content="My links, all in one place.">
-    <meta property="og:title" content="LinkBio">
-    <meta property="og:description" content="All my important links in one place.">
+    <title>Loading...</title>
+    <meta name="description" content="">
+    <meta property="og:title" content="">
+    <meta property="og:description" content="">
     <meta property="og:type" content="website">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -113,257 +113,6 @@
             padding: 40px 20px 60px;
         }
 
-        /* Admin Panel */
-        .admin-toggle {
-            position: fixed;
-            bottom: 24px;
-            right: 24px;
-            z-index: 1000;
-            width: 52px;
-            height: 52px;
-            border-radius: 50%;
-            background: var(--gradient-1);
-            border: none;
-            color: white;
-            font-size: 22px;
-            cursor: pointer;
-            box-shadow: 0 4px 20px var(--accent-glow);
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .admin-toggle:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 30px var(--accent-glow);
-        }
-
-        .admin-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(8px);
-            z-index: 999;
-            animation: fadeIn 0.3s ease;
-        }
-
-        .admin-overlay.active {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .admin-panel {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 32px;
-            width: 90%;
-            max-width: 560px;
-            max-height: 85vh;
-            overflow-y: auto;
-            box-shadow: var(--shadow-lg);
-            animation: slideUp 0.3s ease;
-        }
-
-        .admin-panel::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        .admin-panel::-webkit-scrollbar-track {
-            background: transparent;
-        }
-
-        .admin-panel::-webkit-scrollbar-thumb {
-            background: var(--border-hover);
-            border-radius: 3px;
-        }
-
-        @keyframes slideUp {
-            from { transform: translateY(30px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        .admin-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 28px;
-        }
-
-        .admin-header h2 {
-            font-size: 22px;
-            font-weight: 700;
-            background: var(--gradient-1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .admin-close {
-            background: none;
-            border: none;
-            color: var(--text-secondary);
-            font-size: 28px;
-            cursor: pointer;
-            padding: 4px;
-            transition: var(--transition);
-            line-height: 1;
-        }
-
-        .admin-close:hover {
-            color: var(--text-primary);
-        }
-
-        .admin-section {
-            margin-bottom: 28px;
-        }
-
-        .admin-section h3 {
-            font-size: 13px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--text-secondary);
-            margin-bottom: 14px;
-        }
-
-        .form-group {
-            margin-bottom: 16px;
-        }
-
-        .form-group label {
-            display: block;
-            font-size: 13px;
-            font-weight: 500;
-            color: var(--text-secondary);
-            margin-bottom: 6px;
-        }
-
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 12px 16px;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-sm);
-            color: var(--text-primary);
-            font-size: 14px;
-            font-family: inherit;
-            transition: var(--transition);
-            outline: none;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus,
-        .form-group select:focus {
-            border-color: var(--accent);
-            box-shadow: 0 0 0 3px var(--accent-glow);
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 80px;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 24px;
-            border-radius: var(--radius-sm);
-            font-size: 14px;
-            font-weight: 600;
-            font-family: inherit;
-            cursor: pointer;
-            transition: var(--transition);
-            border: none;
-            text-decoration: none;
-        }
-
-        .btn-primary {
-            background: var(--gradient-1);
-            color: white;
-            box-shadow: 0 4px 15px var(--accent-glow);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 6px 25px var(--accent-glow);
-        }
-
-        .btn-secondary {
-            background: var(--bg-card);
-            color: var(--text-primary);
-            border: 1px solid var(--border);
-        }
-
-        .btn-secondary:hover {
-            border-color: var(--border-hover);
-            background: var(--bg-card-hover);
-        }
-
-        .btn-danger {
-            background: rgba(239, 68, 68, 0.15);
-            color: #ef4444;
-            border: 1px solid rgba(239, 68, 68, 0.2);
-        }
-
-        .btn-danger:hover {
-            background: rgba(239, 68, 68, 0.25);
-        }
-
-        .btn-sm {
-            padding: 8px 14px;
-            font-size: 12px;
-        }
-
-        .admin-link-item {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-sm);
-            padding: 16px;
-            margin-bottom: 12px;
-            transition: var(--transition);
-        }
-
-        .admin-link-item:hover {
-            border-color: var(--border-hover);
-        }
-
-        .admin-link-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 12px;
-        }
-
-        .admin-link-title {
-            font-weight: 600;
-            font-size: 14px;
-        }
-
-        .admin-link-actions {
-            display: flex;
-            gap: 6px;
-        }
-
-        .admin-btn-row {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
 
         /* Profile Section */
         .profile {
@@ -393,56 +142,6 @@
         .avatar:hover {
             transform: scale(1.05);
             box-shadow: 0 0 40px var(--accent-glow);
-        }
-
-        .avatar-placeholder {
-            width: 110px;
-            height: 110px;
-            border-radius: 50%;
-            background: var(--gradient-1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 42px;
-            font-weight: 700;
-            color: white;
-            box-shadow: 0 0 30px var(--accent-glow);
-            transition: var(--transition);
-        }
-
-        .avatar-placeholder:hover {
-            transform: scale(1.05);
-        }
-
-        .status-dot {
-            position: absolute;
-            bottom: 6px;
-            right: 6px;
-            width: 18px;
-            height: 18px;
-            background: #22c55e;
-            border-radius: 50%;
-            border: 3px solid var(--bg-primary);
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4); }
-            50% { box-shadow: 0 0 0 8px rgba(34, 197, 94, 0); }
-        }
-
-        .profile-name {
-            font-size: 28px;
-            font-weight: 800;
-            margin-bottom: 6px;
-            letter-spacing: -0.5px;
-        }
-
-        .profile-handle {
-            font-size: 15px;
-            color: var(--accent);
-            margin-bottom: 12px;
-            font-weight: 500;
         }
 
         .profile-bio {
@@ -704,82 +403,6 @@
             text-shadow: 0 1px 3px rgba(0,0,0,0.5);
         }
 
-        /* Toast */
-        .toast {
-            position: fixed;
-            bottom: 90px;
-            left: 50%;
-            transform: translateX(-50%) translateY(20px);
-            background: var(--bg-card);
-            color: var(--text-primary);
-            padding: 12px 24px;
-            border-radius: var(--radius-sm);
-            border: 1px solid var(--border);
-            font-size: 14px;
-            font-weight: 500;
-            box-shadow: var(--shadow-lg);
-            opacity: 0;
-            transition: all 0.3s ease;
-            z-index: 2000;
-            pointer-events: none;
-        }
-
-        .toast.show {
-            opacity: 1;
-            transform: translateX(-50%) translateY(0);
-        }
-
-        /* Password modal */
-        .password-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.8);
-            backdrop-filter: blur(8px);
-            z-index: 1001;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .password-modal.active {
-            display: flex;
-        }
-
-        .password-box {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 32px;
-            width: 90%;
-            max-width: 380px;
-            text-align: center;
-            animation: slideUp 0.3s ease;
-        }
-
-        .password-box h3 {
-            margin-bottom: 8px;
-            font-size: 18px;
-        }
-
-        .password-box p {
-            color: var(--text-secondary);
-            font-size: 13px;
-            margin-bottom: 20px;
-        }
-
-        .password-box .form-group {
-            margin-bottom: 16px;
-        }
-
-        .password-error {
-            color: #ef4444;
-            font-size: 13px;
-            margin-top: 8px;
-            display: none;
-        }
 
         /* Responsive */
         @media (max-width: 480px) {
@@ -800,11 +423,6 @@
                 height: 38px;
                 font-size: 17px;
                 margin-right: 12px;
-            }
-
-            .admin-panel {
-                padding: 24px;
-                width: 95%;
             }
 
             .stats-bar {
@@ -840,7 +458,7 @@
 
         /* Print */
         @media print {
-            .admin-toggle, .bg-effects, .toast { display: none !important; }
+            .bg-effects { display: none !important; }
             body { background: white; color: black; }
         }
     </style>
@@ -856,176 +474,34 @@
         <!-- Content rendered by JS -->
     </div>
 
-    <button class="admin-toggle" id="adminToggle" title="Admin Panel">⚙️</button>
-
-    <div class="toast" id="toast"></div>
-
-    <!-- Password Modal -->
-    <div class="password-modal" id="passwordModal">
-        <div class="password-box">
-            <h3>🔒 Admin Access</h3>
-            <p>Enter your password to access the admin panel.</p>
-            <div class="form-group">
-                <input type="password" id="passwordInput" placeholder="Enter password..." autocomplete="off">
-                <div class="password-error" id="passwordError">Incorrect password. Please try again.</div>
-            </div>
-            <div class="admin-btn-row" style="justify-content: center;">
-                <button class="btn btn-primary" onclick="checkPassword()">Unlock</button>
-                <button class="btn btn-secondary" onclick="closePasswordModal()">Cancel</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Admin Panel -->
-    <div class="admin-overlay" id="adminOverlay">
-        <div class="admin-panel">
-            <div class="admin-header">
-                <h2>⚡ Admin Panel</h2>
-                <button class="admin-close" onclick="closeAdmin()">&times;</button>
-            </div>
-
-            <!-- Profile Settings -->
-            <div class="admin-section">
-                <h3>👤 Profile</h3>
-                <div class="form-group">
-                    <label>Display Name</label>
-                    <input type="text" id="editName" placeholder="Your Name">
-                </div>
-                <div class="form-group">
-                    <label>Handle / Username</label>
-                    <input type="text" id="editHandle" placeholder="@username">
-                </div>
-                <div class="form-group">
-                    <label>Bio</label>
-                    <textarea id="editBio" placeholder="Write something about yourself..."></textarea>
-                </div>
-                <div class="form-group">
-                    <label>Location</label>
-                    <input type="text" id="editLocation" placeholder="City, Country">
-                </div>
-                <div class="form-group">
-                    <label>Avatar URL (leave empty for initial)</label>
-                    <input type="text" id="editAvatar" placeholder="https://example.com/photo.jpg">
-                </div>
-                <button class="btn btn-primary" onclick="saveProfile()">💾 Save Profile</button>
-            </div>
-
-            <!-- Social Links -->
-            <div class="admin-section">
-                <h3>🌐 Social Icons</h3>
-                <div id="socialEditor"></div>
-                <div class="admin-btn-row" style="margin-top: 12px;">
-                    <button class="btn btn-secondary btn-sm" onclick="addSocial()">+ Add Social</button>
-                    <button class="btn btn-primary btn-sm" onclick="saveSocials()">💾 Save Socials</button>
-                </div>
-            </div>
-
-            <!-- Links Manager -->
-            <div class="admin-section">
-                <h3>🔗 Links</h3>
-                <div id="linksEditor"></div>
-                <div class="admin-btn-row" style="margin-top: 12px;">
-                    <button class="btn btn-secondary btn-sm" onclick="addLink()">+ Add Link</button>
-                    <button class="btn btn-primary btn-sm" onclick="saveLinks()">💾 Save Links</button>
-                </div>
-            </div>
-
-            <!-- Settings -->
-            <div class="admin-section">
-                <h3>🔐 Security</h3>
-                <div class="form-group">
-                    <label>Admin Password</label>
-                    <input type="password" id="editPassword" placeholder="Change admin password">
-                </div>
-                <button class="btn btn-primary btn-sm" onclick="savePassword()">🔑 Update Password</button>
-            </div>
-
-            <!-- Export / Import -->
-            <div class="admin-section">
-                <h3>📦 Data</h3>
-                <div class="admin-btn-row">
-                    <button class="btn btn-secondary btn-sm" onclick="exportData()">📤 Export</button>
-                    <button class="btn btn-secondary btn-sm" onclick="document.getElementById('importFile').click()">📥 Import</button>
-                    <input type="file" id="importFile" accept=".json" style="display:none" onchange="importData(event)">
-                    <button class="btn btn-danger btn-sm" onclick="resetData()">🗑 Reset All</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <script>
         // ============================================
-        // DEFAULT CONFIGURATION - Edit these values!
+        // CONFIGURATION
         // ============================================
-        const DEFAULT_DATA = {
-            profile: {
-                name: "Alex Johnson",
-                handle: "@alexjohnson",
-                bio: "Digital creator & developer. Building cool things on the internet. ✨",
-                location: "San Francisco, CA",
-                avatar: ""
+        const CONFIG_PATH = 'config.json';
+
+        const FALLBACK_DATA = {
+            site: {
+                titleTemplate: '{name} | LinkBio',
+                description: '',
+                ogTitle: '',
+                ogDescription: '',
+                footerHtml: 'Powered by <a href="#">LinkBio</a> • Self-Hosted'
             },
-            password: "admin123",
-            socials: [
-                { platform: "twitter", url: "https://twitter.com" },
-                { platform: "instagram", url: "https://instagram.com" },
-                { platform: "github", url: "https://github.com" },
-                { platform: "youtube", url: "https://youtube.com" },
-                { platform: "linkedin", url: "https://linkedin.com" },
-                { platform: "email", url: "mailto:hello@example.com" }
-            ],
-            links: [
-                {
-                    title: "🚀 My Latest Project",
-                    description: "Check out what I've been building",
-                    url: "https://example.com/project",
-                    icon: "🚀",
-                    category: "Projects",
-                    active: true
-                },
-                {
-                    title: "📝 Read My Blog",
-                    description: "Thoughts on tech, design & life",
-                    url: "https://example.com/blog",
-                    icon: "📝",
-                    category: "Content",
-                    active: true
-                },
-                {
-                    title: "🎥 YouTube Channel",
-                    description: "Tutorials and vlogs every week",
-                    url: "https://youtube.com",
-                    icon: "🎥",
-                    category: "Content",
-                    active: true
-                },
-                {
-                    title: "🛒 My Store",
-                    description: "Merch, courses & digital products",
-                    url: "https://example.com/store",
-                    icon: "🛒",
-                    category: "Shop",
-                    active: true
-                },
-                {
-                    title: "📧 Newsletter",
-                    description: "Join 10k+ subscribers",
-                    url: "https://example.com/newsletter",
-                    icon: "📧",
-                    category: "Connect",
-                    active: true
-                },
-                {
-                    title: "💬 Book a Call",
-                    description: "Let's chat about your project",
-                    url: "https://calendly.com",
-                    icon: "💬",
-                    category: "Connect",
-                    active: true
-                }
-            ],
+            profile: {
+                name: 'LinkBio',
+                handle: '',
+                bio: '',
+                location: '',
+                avatar: ''
+            },
+            socials: [],
+            links: [],
             clicks: {}
         };
+
+        let CONFIG_DATA = null;
 
         // ============================================
         // SVG Icons for Social Platforms
@@ -1051,31 +527,59 @@
         // ============================================
         // DATA MANAGEMENT
         // ============================================
+        function normalizeData(data) {
+            const normalized = JSON.parse(JSON.stringify(data || {}));
+            if (!normalized.site) normalized.site = {};
+            if (!normalized.profile) normalized.profile = {};
+            if (!Array.isArray(normalized.socials)) normalized.socials = [];
+            if (!Array.isArray(normalized.links)) normalized.links = [];
+            if (!normalized.clicks) normalized.clicks = {};
+            return normalized;
+        }
+
+        function mergeData(base, stored) {
+            const merged = JSON.parse(JSON.stringify(base));
+            if (!stored || typeof stored !== 'object') return merged;
+            if (stored.site) merged.site = { ...merged.site, ...stored.site };
+            if (stored.profile) merged.profile = { ...merged.profile, ...stored.profile };
+            if (Array.isArray(stored.socials)) merged.socials = stored.socials;
+            if (Array.isArray(stored.links)) merged.links = stored.links;
+            if (stored.clicks && typeof stored.clicks === 'object') merged.clicks = stored.clicks;
+            return merged;
+        }
+
+        function getDefaultData() {
+            return JSON.parse(JSON.stringify(CONFIG_DATA || FALLBACK_DATA));
+        }
+
+        async function loadConfig() {
+            try {
+                const response = await fetch(CONFIG_PATH, { cache: 'no-store' });
+                if (!response.ok) throw new Error('Failed to load config.json');
+                return normalizeData(await response.json());
+            } catch (err) {
+                console.warn('Using fallback config:', err);
+                return normalizeData(FALLBACK_DATA);
+            }
+        }
+
         function getData() {
             const stored = localStorage.getItem('linkbio_data');
             if (stored) {
                 try {
                     const parsed = JSON.parse(stored);
-                    // Ensure clicks object exists
-                    if (!parsed.clicks) parsed.clicks = {};
-                    return parsed;
-                } catch(e) {
-                    return JSON.parse(JSON.stringify(DEFAULT_DATA));
+                    return mergeData(getDefaultData(), parsed);
+                } catch (e) {
+                    return getDefaultData();
                 }
             }
-            return JSON.parse(JSON.stringify(DEFAULT_DATA));
+            return getDefaultData();
         }
 
         function saveData(data) {
             localStorage.setItem('linkbio_data', JSON.stringify(data));
         }
 
-        function showToast(message) {
-            const toast = document.getElementById('toast');
-            toast.textContent = message;
-            toast.classList.add('show');
-            setTimeout(() => toast.classList.remove('show'), 2800);
-        }
 
         // ============================================
         // RENDERING
@@ -1083,6 +587,7 @@
         function render() {
             const data = getData();
             const container = document.getElementById('mainContainer');
+            applySiteConfig(data);
 
             // Group links by category
             const activeLinks = data.links.filter(l => l.active);
@@ -1164,11 +669,14 @@
             html += '</div>';
 
             // Footer
-            html += `
-                <div class="footer fade-in">
-                    <p class="footer-text">Powered by <a href="#">LinkBio</a> • Self-Hosted</p>
-                </div>
-            `;
+            const footerHtml = data.site && data.site.footerHtml ? data.site.footerHtml : '';
+            if (footerHtml) {
+                html += `
+                    <div class="footer fade-in">
+                        <p class="footer-text">${footerHtml}</p>
+                    </div>
+                `;
+            }
 
             container.innerHTML = html;
         }
@@ -1204,6 +712,27 @@
             return num.toString();
         }
 
+        function setMetaByName(name, content) {
+            const meta = document.querySelector(`meta[name="${name}"]`);
+            if (meta) meta.setAttribute('content', content || '');
+        }
+
+        function setMetaByProperty(property, content) {
+            const meta = document.querySelector(`meta[property="${property}"]`);
+            if (meta) meta.setAttribute('content', content || '');
+        }
+
+        function applySiteConfig(data) {
+            const site = data.site || {};
+            const profile = data.profile || {};
+            const titleTemplate = site.titleTemplate || '{name} | LinkBio';
+            const pageTitle = titleTemplate.replace('{name}', profile.name || 'LinkBio');
+            document.title = pageTitle;
+            setMetaByName('description', site.description || '');
+            setMetaByProperty('og:title', site.ogTitle || pageTitle);
+            setMetaByProperty('og:description', site.ogDescription || site.description || '');
+        }
+
         // ============================================
         // CLICK TRACKING
         // ============================================
@@ -1214,334 +743,20 @@
             saveData(data);
         }
 
-        // ============================================
-        // ADMIN PANEL
-        // ============================================
-        let isAuthenticated = false;
-
-        document.getElementById('adminToggle').addEventListener('click', () => {
-            if (isAuthenticated) {
-                openAdmin();
-            } else {
-                document.getElementById('passwordModal').classList.add('active');
-                document.getElementById('passwordInput').focus();
-            }
-        });
-
-        document.getElementById('passwordInput').addEventListener('keydown', (e) => {
-            if (e.key === 'Enter') checkPassword();
-        });
-
-        function checkPassword() {
-            const data = getData();
-            const input = document.getElementById('passwordInput').value;
-            if (input === data.password) {
-                isAuthenticated = true;
-                document.getElementById('passwordModal').classList.remove('active');
-                document.getElementById('passwordInput').value = '';
-                document.getElementById('passwordError').style.display = 'none';
-                openAdmin();
-            } else {
-                document.getElementById('passwordError').style.display = 'block';
-                document.getElementById('passwordInput').value = '';
-                document.getElementById('passwordInput').focus();
-            }
-        }
-
-        function closePasswordModal() {
-            document.getElementById('passwordModal').classList.remove('active');
-            document.getElementById('passwordInput').value = '';
-            document.getElementById('passwordError').style.display = 'none';
-        }
-
-        function openAdmin() {
-            const data = getData();
-
-            // Populate profile fields
-            document.getElementById('editName').value = data.profile.name || '';
-            document.getElementById('editHandle').value = data.profile.handle || '';
-            document.getElementById('editBio').value = data.profile.bio || '';
-            document.getElementById('editLocation').value = data.profile.location || '';
-            document.getElementById('editAvatar').value = data.profile.avatar || '';
-
-            // Render social editor
-            renderSocialEditor(data.socials);
-
-            // Render links editor
-            renderLinksEditor(data.links);
-
-            document.getElementById('adminOverlay').classList.add('active');
-        }
-
-        function closeAdmin() {
-            document.getElementById('adminOverlay').classList.remove('active');
-        }
-
-        // Close admin on overlay click
-        document.getElementById('adminOverlay').addEventListener('click', (e) => {
-            if (e.target === document.getElementById('adminOverlay')) {
-                closeAdmin();
-            }
-        });
-
-        // Close on Escape
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                closeAdmin();
-                closePasswordModal();
-            }
-        });
-
-        // ============================================
-        // PROFILE EDITOR
-        // ============================================
-        function saveProfile() {
-            const data = getData();
-            data.profile.name = document.getElementById('editName').value.trim();
-            data.profile.handle = document.getElementById('editHandle').value.trim();
-            data.profile.bio = document.getElementById('editBio').value.trim();
-            data.profile.location = document.getElementById('editLocation').value.trim();
-            data.profile.avatar = document.getElementById('editAvatar').value.trim();
-            saveData(data);
-            render();
-            showToast('✅ Profile saved!');
-        }
-
-        // ============================================
-        // SOCIAL EDITOR
-        // ============================================
-        function renderSocialEditor(socials) {
-            const container = document.getElementById('socialEditor');
-            let html = '';
-            socials.forEach((social, i) => {
-                html += `
-                    <div class="admin-link-item" data-social-index="${i}">
-                        <div class="admin-link-header">
-                            <span class="admin-link-title">${social.platform}</span>
-                            <div class="admin-link-actions">
-                                <button class="btn btn-danger btn-sm" onclick="removeSocial(${i})">✕</button>
-                            </div>
-                        </div>
-                        <div class="form-group" style="margin-bottom:8px">
-                            <select onchange="updateSocialField(${i}, 'platform', this.value)">
-                                ${PLATFORM_OPTIONS.map(p => `<option value="${p}" ${p === social.platform ? 'selected' : ''}>${p}</option>`).join('')}
-                            </select>
-                        </div>
-                        <div class="form-group" style="margin-bottom:0">
-                            <input type="url" value="${escapeHtml(social.url)}" placeholder="URL" onchange="updateSocialField(${i}, 'url', this.value)">
-                        </div>
-                    </div>
-                `;
-            });
-            container.innerHTML = html;
-        }
-
-        function updateSocialField(index, field, value) {
-            const data = getData();
-            if (data.socials[index]) {
-                data.socials[index][field] = value;
-                saveData(data);
-            }
-        }
-
-        function addSocial() {
-            const data = getData();
-            data.socials.push({ platform: 'website', url: 'https://' });
-            saveData(data);
-            renderSocialEditor(data.socials);
-            showToast('➕ Social added!');
-        }
-
-        function removeSocial(index) {
-            const data = getData();
-            data.socials.splice(index, 1);
-            saveData(data);
-            renderSocialEditor(data.socials);
-            showToast('🗑 Social removed');
-        }
-
-        function saveSocials() {
-            render();
-            showToast('✅ Socials saved!');
-        }
-
-        // ============================================
-        // LINKS EDITOR
-        // ============================================
-        function renderLinksEditor(links) {
-            const container = document.getElementById('linksEditor');
-            let html = '';
-            links.forEach((link, i) => {
-                const clicks = getData().clicks[link.url] || 0;
-                html += `
-                    <div class="admin-link-item" data-link-index="${i}">
-                        <div class="admin-link-header">
-                            <span class="admin-link-title">${link.icon || '🔗'} ${escapeHtml(link.title || 'Untitled')}</span>
-                            <div class="admin-link-actions">
-                                ${i > 0 ? `<button class="btn btn-secondary btn-sm" onclick="moveLink(${i}, -1)">↑</button>` : ''}
-                                ${i < links.length - 1 ? `<button class="btn btn-secondary btn-sm" onclick="moveLink(${i}, 1)">↓</button>` : ''}
-                                <button class="btn btn-danger btn-sm" onclick="removeLink(${i})">✕</button>
-                            </div>
-                        </div>
-                        <div style="display:grid; grid-template-columns:60px 1fr; gap:8px; margin-bottom:8px">
-                            <div class="form-group" style="margin-bottom:0">
-                                <input type="text" value="${escapeHtml(link.icon)}" placeholder="Icon" onchange="updateLinkField(${i}, 'icon', this.value)" style="text-align:center">
-                            </div>
-                            <div class="form-group" style="margin-bottom:0">
-                                <input type="text" value="${escapeHtml(link.title)}" placeholder="Title" onchange="updateLinkField(${i}, 'title', this.value)">
-                            </div>
-                        </div>
-                        <div class="form-group" style="margin-bottom:8px">
-                            <input type="text" value="${escapeHtml(link.description)}" placeholder="Description (optional)" onchange="updateLinkField(${i}, 'description', this.value)">
-                        </div>
-                        <div class="form-group" style="margin-bottom:8px">
-                            <input type="url" value="${escapeHtml(link.url)}" placeholder="URL" onchange="updateLinkField(${i}, 'url', this.value)">
-                        </div>
-                        <div style="display:grid; grid-template-columns:1fr auto; gap:8px; align-items:center;">
-                            <div class="form-group" style="margin-bottom:0">
-                                <input type="text" value="${escapeHtml(link.category)}" placeholder="Category (optional)" onchange="updateLinkField(${i}, 'category', this.value)">
-                            </div>
-                            <label style="display:flex; align-items:center; gap:6px; font-size:13px; color:var(--text-secondary); cursor:pointer; white-space:nowrap;">
-                                <input type="checkbox" ${link.active ? 'checked' : ''} onchange="updateLinkField(${i}, 'active', this.checked)">
-                                Active
-                            </label>
-                        </div>
-                        ${clicks > 0 ? `<div style="margin-top:8px; font-size:12px; color:var(--text-secondary);">📊 ${clicks} clicks</div>` : ''}
-                    </div>
-                `;
-            });
-            container.innerHTML = html;
-        }
-
-        function updateLinkField(index, field, value) {
-            const data = getData();
-            if (data.links[index]) {
-                data.links[index][field] = value;
-                saveData(data);
-            }
-        }
-
-        function addLink() {
-            const data = getData();
-            data.links.push({
-                title: 'New Link',
-                description: '',
-                url: 'https://',
-                icon: '🔗',
-                category: '',
-                active: true
-            });
-            saveData(data);
-            renderLinksEditor(data.links);
-            showToast('➕ Link added!');
-        }
-
-        function removeLink(index) {
-            if (!confirm('Remove this link?')) return;
-            const data = getData();
-            data.links.splice(index, 1);
-            saveData(data);
-            renderLinksEditor(data.links);
-            showToast('🗑 Link removed');
-        }
-
-        function moveLink(index, direction) {
-            const data = getData();
-            const newIndex = index + direction;
-            if (newIndex < 0 || newIndex >= data.links.length) return;
-            const temp = data.links[index];
-            data.links[index] = data.links[newIndex];
-            data.links[newIndex] = temp;
-            saveData(data);
-            renderLinksEditor(data.links);
-        }
-
-        function saveLinks() {
-            render();
-            showToast('✅ Links saved!');
-        }
-
-        // ============================================
-        // PASSWORD
-        // ============================================
-        function savePassword() {
-            const newPass = document.getElementById('editPassword').value.trim();
-            if (!newPass) {
-                showToast('⚠️ Password cannot be empty');
-                return;
-            }
-            if (newPass.length < 4) {
-                showToast('⚠️ Password must be at least 4 characters');
-                return;
-            }
-            const data = getData();
-            data.password = newPass;
-            saveData(data);
-            document.getElementById('editPassword').value = '';
-            showToast('🔑 Password updated!');
-        }
-
-        // ============================================
-        // EXPORT / IMPORT / RESET
-        // ============================================
-        function exportData() {
-            const data = getData();
-            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = `linkbio-backup-${new Date().toISOString().slice(0, 10)}.json`;
-            a.click();
-            URL.revokeObjectURL(url);
-            showToast('📤 Data exported!');
-        }
-
-        function importData(event) {
-            const file = event.target.files[0];
-            if (!file) return;
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                try {
-                    const imported = JSON.parse(e.target.result);
-                    if (imported.profile && imported.links) {
-                        saveData(imported);
-                        render();
-                        openAdmin();
-                        showToast('📥 Data imported successfully!');
-                    } else {
-                        showToast('⚠️ Invalid file format');
-                    }
-                } catch (err) {
-                    showToast('⚠️ Error reading file');
-                }
-            };
-            reader.readAsText(file);
-            event.target.value = '';
-        }
-
-        function resetData() {
-            if (!confirm('Are you sure? This will delete ALL your data and restore defaults.')) return;
-            if (!confirm('This cannot be undone. Really reset everything?')) return;
-            localStorage.removeItem('linkbio_data');
-            render();
-            openAdmin();
-            showToast('🗑 All data reset to defaults');
-        }
 
         // ============================================
         // INITIALIZE
         // ============================================
-        // Initialize data if first visit
-        if (!localStorage.getItem('linkbio_data')) {
-            saveData(DEFAULT_DATA);
+        async function init() {
+            CONFIG_DATA = await loadConfig();
+            const mergedDefault = mergeData(getDefaultData(), CONFIG_DATA);
+            if (!localStorage.getItem('linkbio_data')) {
+                saveData(mergedDefault);
+            }
+            render();
         }
 
-        // Render the page
-        render();
-
-        // Update page title
-        const pageData = getData();
-        document.title = `${pageData.profile.name} | LinkBio`;
+        init();
 
         // Service Worker registration for PWA-like behavior (optional)
         if ('serviceWorker' in navigator && location.protocol === 'https:') {
