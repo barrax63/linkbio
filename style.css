@@ -289,9 +289,8 @@ body {
 .link-description {
     font-size: 13px;
     color: var(--text-secondary);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    white-space: normal;
+    overflow-wrap: anywhere;
 }
 
 .link-arrow {
