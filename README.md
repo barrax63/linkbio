@@ -19,7 +19,7 @@ LinkBio is a self-hosted "link in bio" page that loads your profile and links fr
 
 ## Quick Start
 
-1. Edit `config.json` with your profile, social links, and cards.
+1. Rename `config.json.example` to `config.json` and edit with your profile, social links, and cards.
 2. Open `index.html` through a local web server (recommended).
 3. Deploy the folder to any static host.
 

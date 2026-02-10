@@ -4,7 +4,7 @@
     "description": "My links, all in one place.",
     "ogTitle": "LinkBio",
     "ogDescription": "All my important links in one place.",
-    "footerHtml": "Powered by <a href=\"#\">LinkBio</a> • Self-Hosted"
+    "footerHtml": "Powered by <a href=\"https://github.com/barrax63/linkbio\">LinkBio</a> • Self-Hosted"
   },
   "profile": {
     "name": "Alex Johnson",
