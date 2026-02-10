@@ -24,6 +24,7 @@ const FALLBACK_DATA = {
 };
 
 let CONFIG_DATA = null;
+let configLoadFailed = false;
 
 // ============================================
 // SVG Icons for Social Platforms
@@ -80,6 +81,7 @@ async function loadConfig() {
         if (!response.ok) throw new Error('Failed to load config.json');
         return normalizeData(await response.json());
     } catch (err) {
+        configLoadFailed = true;
         console.warn('Using fallback config:', err);
         return normalizeData(FALLBACK_DATA);
     }
@@ -287,6 +289,20 @@ function trackClick(url) {
     saveData(data);
 }
 
+function showConfigWarning() {
+    if (!configLoadFailed) return;
+    if (document.querySelector('.config-warning')) return;
+    const warning = document.createElement('div');
+    warning.className = 'config-warning';
+    warning.textContent = 'Config file failed to load. Using defaults. Serve this page from a local web server if you opened it directly.';
+    const container = document.getElementById('mainContainer');
+    if (container && container.parentNode) {
+        container.parentNode.insertBefore(warning, container);
+    } else {
+        document.body.prepend(warning);
+    }
+}
+
 // ============================================
 // INITIALIZE
 // ============================================
@@ -297,6 +313,7 @@ async function init() {
         saveData(mergedDefault);
     }
     render();
+    showConfigWarning();
 }
 
 init();
