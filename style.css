@@ -1,3 +1,11 @@
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 300 800;
+    font-display: swap;
+    src: local('Inter'), url('fonts/Inter-VariableFont_opsz,wght.woff2') format('woff2');
+}
+
 :root {
     --bg-primary: #0a0a0a;
     --bg-secondary: #141414;
