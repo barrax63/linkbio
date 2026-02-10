@@ -19,8 +19,7 @@ const FALLBACK_DATA = {
         avatar: ''
     },
     socials: [],
-    links: [],
-    clicks: {}
+    links: []
 };
 
 let CONFIG_DATA = null;
@@ -45,8 +44,6 @@ const SOCIAL_ICONS = {
     pinterest: '<svg viewBox="0 0 24 24"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 01.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12.017 24c6.624 0 11.99-5.367 11.99-11.988C24.007 5.367 18.641.001 12.017.001z"/></svg>'
 };
 
-const PLATFORM_OPTIONS = Object.keys(SOCIAL_ICONS);
-
 // ============================================
 // DATA MANAGEMENT
 // ============================================
@@ -56,7 +53,6 @@ function normalizeData(data) {
     if (!normalized.profile) normalized.profile = {};
     if (!Array.isArray(normalized.socials)) normalized.socials = [];
     if (!Array.isArray(normalized.links)) normalized.links = [];
-    if (!normalized.clicks) normalized.clicks = {};
     return normalized;
 }
 
@@ -67,7 +63,6 @@ function mergeData(base, stored) {
     if (stored.profile) merged.profile = { ...merged.profile, ...stored.profile };
     if (Array.isArray(stored.socials)) merged.socials = stored.socials;
     if (Array.isArray(stored.links)) merged.links = stored.links;
-    if (stored.clicks && typeof stored.clicks === 'object') merged.clicks = stored.clicks;
     return merged;
 }
 
@@ -110,8 +105,6 @@ function saveData(data) {
 function render() {
     const data = getData();
     const container = document.getElementById('mainContainer');
-    applySiteConfig(data);
-
     // Group links by category
     const activeLinks = data.links.filter(l => l.active);
     const categories = {};
@@ -125,9 +118,6 @@ function render() {
             uncategorized.push(link);
         }
     });
-
-    // Total clicks
-    const totalClicks = Object.values(data.clicks || {}).reduce((a, b) => a + b, 0);
 
     let html = `
         <div class="profile fade-in">
@@ -154,20 +144,6 @@ function render() {
         });
         html += '</div>';
     }
-
-    // Stats
-    html += `
-        <div class="stats-bar fade-in">
-            <div class="stat-item">
-                <div class="stat-number">${activeLinks.length}</div>
-                <div class="stat-label">Links</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">${formatNumber(totalClicks)}</div>
-                <div class="stat-label">Clicks</div>
-            </div>
-        </div>
-    `;
 
     // Links
     html += '<div class="links-section">';
@@ -202,13 +178,12 @@ function render() {
     }
 
     container.innerHTML = html;
-    wireLinkTracking(container);
     wireAvatarFallbacks(container);
 }
 
 function renderLinkCard(link) {
     return `
-        <a href="${escapeHtml(link.url)}" class="link-card fade-in" target="_blank" rel="noopener noreferrer" data-url="${escapeHtml(link.url)}">
+        <a href="${escapeHtml(link.url)}" class="link-card fade-in" target="_blank" rel="noopener noreferrer">
             <div class="link-icon">${link.icon || '🔗'}</div>
             <div class="link-content">
                 <div class="link-title">${escapeHtml(link.title)}</div>
@@ -217,17 +192,6 @@ function renderLinkCard(link) {
             <span class="link-arrow">→</span>
         </a>
     `;
-}
-
-function wireLinkTracking(container) {
-    if (container.dataset.linkTracking === 'true') return;
-    container.addEventListener('click', (event) => {
-        const card = event.target.closest('.link-card');
-        if (!card) return;
-        const url = card.getAttribute('data-url');
-        if (url) trackClick(url);
-    });
-    container.dataset.linkTracking = 'true';
 }
 
 function wireAvatarFallbacks(container) {
@@ -250,43 +214,6 @@ function escapeHtml(str) {
 
 function getInitial(name) {
     return name ? name.charAt(0).toUpperCase() : '?';
-}
-
-function formatNumber(num) {
-    if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
-    if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
-    return num.toString();
-}
-
-function setMetaByName(name, content) {
-    const meta = document.querySelector(`meta[name="${name}"]`);
-    if (meta) meta.setAttribute('content', content || '');
-}
-
-function setMetaByProperty(property, content) {
-    const meta = document.querySelector(`meta[property="${property}"]`);
-    if (meta) meta.setAttribute('content', content || '');
-}
-
-function applySiteConfig(data) {
-    const site = data.site || {};
-    const profile = data.profile || {};
-    const titleTemplate = site.titleTemplate || '{name} | LinkBio';
-    const pageTitle = titleTemplate.replace('{name}', profile.name || 'LinkBio');
-    document.title = pageTitle;
-    setMetaByName('description', site.description || '');
-    setMetaByProperty('og:title', site.ogTitle || pageTitle);
-    setMetaByProperty('og:description', site.ogDescription || site.description || '');
-}
-
-// ============================================
-// CLICK TRACKING
-// ============================================
-function trackClick(url) {
-    const data = getData();
-    if (!data.clicks) data.clicks = {};
-    data.clicks[url] = (data.clicks[url] || 0) + 1;
-    saveData(data);
 }
 
 function showConfigWarning() {
