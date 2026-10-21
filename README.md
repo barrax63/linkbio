@@ -7,7 +7,7 @@ LinkBio is a self-hosted "link in bio" page that loads your profile and links fr
 - Single-page link hub for Instagram and other social profiles
 - Config-driven content in `config.json`
 - Static HTML, CSS, and JavaScript (no build step)
-- Optional local click persistence via `localStorage`
+- English and German link descriptions, picked from the visitor's browser language
 - Works on any static hosting provider
 
 ## Project Structure
@@ -43,7 +43,22 @@ All user-editable content is in `config.json`:
 - `site.footerHtml` - Footer HTML (use carefully)
 - `profile` - Name, handle, bio, location, avatar URL
 - `socials` - Icon links (platform + URL)
-- `links` - Your cards (title, description, url, icon, category, active)
+- `links` - Your cards (title, description, url, language, icon, category, active)
+
+### Languages
+
+The page shows English or German depending on the visitor's browser language (English if neither is preferred).
+
+- `description` can be a plain string (shown to everyone) or one text per language:
+
+  ```json
+  "description": {
+    "en": "Tutorials and vlogs every week",
+    "de": "Jede Woche Tutorials und Vlogs"
+  }
+  ```
+
+- `language` (optional) marks a page that only exists in one language (`"en"` or `"de"`). Visitors whose browser uses the other language see a "German only" / "Nur auf Englisch" note on the card. Leave it out for pages that are available in both.
 
 ## Open Graph and Social Previews
 

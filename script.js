@@ -26,6 +26,38 @@ let CONFIG_DATA = null;
 let configLoadFailed = false;
 
 // ============================================
+// LANGUAGE
+// ============================================
+const SUPPORTED_LANGUAGES = ['en', 'de'];
+const DEFAULT_LANGUAGE = 'en';
+
+// Shown on links whose page is only available in one language,
+// keyed by visitor language, then page language
+const LANGUAGE_NOTES = {
+    en: { en: 'English only', de: 'German only' },
+    de: { en: 'Nur auf Englisch', de: 'Nur auf Deutsch' }
+};
+
+function detectLanguage() {
+    const preferred = navigator.languages && navigator.languages.length
+        ? navigator.languages
+        : [navigator.language || ''];
+    for (const tag of preferred) {
+        const base = tag.toLowerCase().split('-')[0];
+        if (SUPPORTED_LANGUAGES.includes(base)) return base;
+    }
+    return DEFAULT_LANGUAGE;
+}
+
+const LANGUAGE = detectLanguage();
+
+// Accepts a plain string or an object like { "en": "...", "de": "..." }
+function localize(value) {
+    if (!value || typeof value === 'string') return value;
+    return value[LANGUAGE] || value[DEFAULT_LANGUAGE] || Object.values(value)[0] || '';
+}
+
+// ============================================
 // SVG Icons for Social Platforms
 // ============================================
 const SOCIAL_ICONS = {
@@ -61,17 +93,7 @@ function normalizeData(data) {
     return normalized;
 }
 
-function mergeData(base, stored) {
-    const merged = JSON.parse(JSON.stringify(base));
-    if (!stored || typeof stored !== 'object') return merged;
-    if (stored.site) merged.site = { ...merged.site, ...stored.site };
-    if (stored.profile) merged.profile = { ...merged.profile, ...stored.profile };
-    if (Array.isArray(stored.socials)) merged.socials = stored.socials;
-    if (Array.isArray(stored.links)) merged.links = stored.links;
-    return merged;
-}
-
-function getDefaultData() {
+function getData() {
     return JSON.parse(JSON.stringify(CONFIG_DATA || FALLBACK_DATA));
 }
 
@@ -85,23 +107,6 @@ async function loadConfig() {
         console.warn('Using fallback config:', err);
         return normalizeData(FALLBACK_DATA);
     }
-}
-
-function getData() {
-    const stored = localStorage.getItem('linkbio_data');
-    if (stored) {
-        try {
-            const parsed = JSON.parse(stored);
-            return mergeData(getDefaultData(), parsed);
-        } catch (e) {
-            return getDefaultData();
-        }
-    }
-    return getDefaultData();
-}
-
-function saveData(data) {
-    localStorage.setItem('linkbio_data', JSON.stringify(data));
 }
 
 // ============================================
@@ -187,12 +192,17 @@ function render() {
 }
 
 function renderLinkCard(link) {
+    const description = localize(link.description);
+    const languageNote = link.language && link.language !== LANGUAGE
+        ? LANGUAGE_NOTES[LANGUAGE][link.language]
+        : '';
     return `
         <a href="${escapeHtml(link.url)}" class="link-card fade-in" target="_blank" rel="noopener noreferrer">
             <div class="link-icon">${link.icon || '🔗'}</div>
             <div class="link-content">
                 <div class="link-title">${escapeHtml(link.title)}</div>
-                ${link.description ? `<div class="link-description">${escapeHtml(link.description)}</div>` : ''}
+                ${description ? `<div class="link-description">${escapeHtml(description)}</div>` : ''}
+                ${languageNote ? `<span class="link-language">${escapeHtml(languageNote)}</span>` : ''}
             </div>
             <span class="link-arrow">→</span>
         </a>
@@ -240,10 +250,6 @@ function showConfigWarning() {
 // ============================================
 async function init() {
     CONFIG_DATA = await loadConfig();
-    const mergedDefault = mergeData(getDefaultData(), CONFIG_DATA);
-    if (!localStorage.getItem('linkbio_data')) {
-        saveData(mergedDefault);
-    }
     render();
     showConfigWarning();
 }

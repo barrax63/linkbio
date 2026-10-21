@@ -52,13 +52,17 @@
       "title": "📝 Read My Blog",
       "description": "Thoughts on tech, design & life",
       "url": "https://example.com/blog",
+      "language": "en",
       "icon": "📝",
       "category": "Content",
       "active": true
     },
     {
       "title": "🎥 YouTube Channel",
-      "description": "Tutorials and vlogs every week",
+      "description": {
+        "en": "Tutorials and vlogs every week",
+        "de": "Jede Woche Tutorials und Vlogs"
+      },
       "url": "https://youtube.com",
       "icon": "🎥",
       "category": "Content",

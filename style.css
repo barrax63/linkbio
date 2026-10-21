@@ -293,6 +293,18 @@ body {
     overflow-wrap: anywhere;
 }
 
+.link-language {
+    display: inline-block;
+    margin-top: 6px;
+    padding: 2px 8px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #9d97ff;
+    background: rgba(108, 99, 255, 0.1);
+    border: 1px solid rgba(108, 99, 255, 0.15);
+    border-radius: 999px;
+}
+
 .link-arrow {
     position: relative;
     z-index: 1;
