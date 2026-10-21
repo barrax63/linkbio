@@ -62,7 +62,7 @@ The page shows English or German depending on the visitor's browser language (En
 
 ## Open Graph and Social Previews
 
-`index.html` contains baked Open Graph meta tags for social previews. If you change the values in `config.json`, update the tags in `index.html` to match:
+The page title, description, and Open Graph tags are set from `config.json` when the page loads. `index.html` also contains baked versions of these tags for social previews. If you want link previews to match your config, update the tags in `index.html` too:
 
 - `<title>`
 - `<meta name="description">`

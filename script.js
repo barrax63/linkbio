@@ -112,8 +112,25 @@ async function loadConfig() {
 // ============================================
 // RENDERING
 // ============================================
+function applySiteMeta(data) {
+    const site = data.site;
+    if (site.titleTemplate) {
+        document.title = site.titleTemplate.replace(/\{name\}/g, data.profile.name || '');
+    }
+    setMetaContent('meta[name="description"]', site.description);
+    setMetaContent('meta[property="og:title"]', site.ogTitle);
+    setMetaContent('meta[property="og:description"]', site.ogDescription);
+}
+
+function setMetaContent(selector, value) {
+    if (!value) return;
+    const meta = document.querySelector(selector);
+    if (meta) meta.setAttribute('content', value);
+}
+
 function render() {
     const data = getData();
+    applySiteMeta(data);
     const container = document.getElementById('mainContainer');
     // Group links by category
     const activeLinks = data.links.filter(l => l.active);
